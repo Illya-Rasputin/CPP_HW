@@ -55,15 +55,20 @@ public:
     void fill() {
         system("cls"); 
         
-        for (int y = 0; y < height; ++y) {
-            for (int x = 0; x < width; ++x) {
-                bool partOfShape = false;
-                for (int sy = 0; sy < (int)cShape.blocks.size(); ++sy) {
-                    for (int sx = 0; sx < (int)cShape.blocks[sy].size(); ++sx) {
-                        int fx = cShape.x + sx;
-                        int fy = cShape.y + sy;
-                        if (fx == x && fy == y && cShape.blocks[sy][sx] == 1)
-                            partOfShape = true;
+        
+
+        for (int j = 0; j < height; ++j) {
+            cout << "|";
+            for (int i = 0; i < width; ++i) {
+                bool isShapeBlock = false;
+                for (int k = 0; k < 4; ++k) {
+                    if (cShape.blocks[k][0] == i && cShape.blocks[k][1] == j) {
+                        isShapeBlock = true;
+                        break;
+                    }
+                }
+                if (isShapeBlock) {
+                    cout << "[]";
                     }
                 }
                 if (partOfShape)
